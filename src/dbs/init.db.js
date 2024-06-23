@@ -1,6 +1,10 @@
 'use strict';
 const moongoose = require('mongoose');
 const { connectCount } = require('../helpers/check.connect');
+const { db } = require('../configs/config');
+
+const URL_MONGO = `mongodb://${db.host}:${db.port}/${db.name}`;
+console.log(URL_MONGO);
 class Database {
   constructor() {
     this.connect();
@@ -13,7 +17,7 @@ class Database {
         moongoose.set('debug', { color: true });
       }
       moongoose
-        .connect('mongodb://localhost:27017/eccomerce', {
+        .connect(URL_MONGO, {
           maxPoolSize: 50
         })
         .then(() => {

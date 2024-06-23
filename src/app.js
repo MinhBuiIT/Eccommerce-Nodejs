@@ -2,7 +2,9 @@ const compression = require('compression');
 const express = require('express');
 const { default: helmet } = require('helmet');
 const morgan = require('morgan');
+const dotenv = require('dotenv');
 
+dotenv.config();
 const app = express();
 //connect db
 require('./dbs/init.db');
